@@ -15,6 +15,7 @@ class SuperMarket {
 
     private var totalManzanas = 0
     private var totalApfel = 0
+    private var totalApple = 0
 
     fun input(input: String) {
 
@@ -23,7 +24,6 @@ class SuperMarket {
         for (item in items) {
             processItem(item)
         }
-
     }
 
     fun processItem(item: String) {
@@ -35,6 +35,14 @@ class SuperMarket {
             total += calculateCherryPrice()
         } else if (apple.contains(item)) {
             total += calculateApplePrice(item)
+        }
+
+        applyDiscount()
+    }
+
+    private fun applyDiscount() {
+        if ((totalCherries + totalBananas + totalManzanas + totalApfel + totalApple) % 5 == 0) {
+            total -= 200
         }
     }
 
@@ -63,7 +71,12 @@ class SuperMarket {
         } else if (item.equals("apfel")) {
             totalApfel += 1
             if (totalApfel % 2 == 0) {
-                return applePrice - 50
+                return applePrice - 150
+            }
+        } else if(item.equals("apple")) {
+            totalApple += 1
+            if (totalApple % 4 == 0) {
+                return applePrice - 100
             }
         }
 

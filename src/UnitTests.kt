@@ -14,6 +14,20 @@ class UnitTests {
     }
 
     @Test
+    fun cherryDiscountFour() {
+        val superMarket: SuperMarket = SuperMarket()
+
+        superMarket.input("cherry")
+        assertTrue(superMarket.total == 75)
+        superMarket.input("cherry")
+        assertTrue(superMarket.total == 130)
+        superMarket.input("cherry")
+        assertTrue(superMarket.total == 205)
+        superMarket.input("cherry")
+        assertTrue(superMarket.total == 260)
+    }
+
+    @Test
     fun discount() {
         val superMarket: SuperMarket = SuperMarket()
 
@@ -25,8 +39,6 @@ class UnitTests {
         assertTrue(superMarket.total == 230)
         superMarket.input("cherry")
         assertTrue(superMarket.total == 305)
-        superMarket.input("cherry")
-        assertTrue(superMarket.total == 360)
     }
 
     @Test
@@ -74,7 +86,7 @@ class UnitTests {
         val superMarket: SuperMarket = SuperMarket()
 
         superMarket.input("apfel,apfel")
-        assertTrue(superMarket.total == 150)
+        assertTrue(superMarket.total == 50)
     }
 
     @Test
@@ -83,5 +95,19 @@ class UnitTests {
 
         superMarket.input("apple,manzana,manzana,apfel")
         assertTrue(superMarket.total == 400)
+    }
+
+    @Test
+    fun five_fruit_discount() {
+        val superMarket: SuperMarket = SuperMarket()
+
+        superMarket.input("apfel,manzana,manzana,apfel")
+        assertTrue(superMarket.total == 250)
+
+        superMarket.input("banana")
+        assertTrue(superMarket.total == 200)
+
+        superMarket.input("apfel,manzana,manzana,apple,apfel")
+        assertTrue(superMarket.total == 250)
     }
 }
