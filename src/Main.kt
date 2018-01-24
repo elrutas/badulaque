@@ -3,6 +3,9 @@ fun main(vararg args: String) {
 
     while (true) {
         val inputString = readLine()!!
+        if (inputString.equals("exit")) {
+            break
+        }
         superMarket.input(inputString)
         println("Total:" + superMarket.total)
     }
