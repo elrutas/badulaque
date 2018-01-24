@@ -13,6 +13,9 @@ class SuperMarket {
     private var totalCherries = 0
     private var totalBananas = 0
 
+    private var totalManzanas = 0
+    private var totalApfel = 0
+
     fun input(input: String) {
 
         val items = input.split(",")
@@ -31,7 +34,7 @@ class SuperMarket {
             totalCherries = totalCherries + 1
             total += calculateCherryPrice()
         } else if (apple.contains(item)) {
-            total += applePrice
+            total += calculateApplePrice(item)
         }
     }
 
@@ -49,5 +52,21 @@ class SuperMarket {
         } else {
             return bananaPrice
         }
+    }
+
+    private fun calculateApplePrice(item: String) : Int {
+        if (item.equals("manzana")) {
+            totalManzanas += 1
+            if (totalManzanas % 3 == 0) {
+                return 0
+            }
+        } else if (item.equals("apfel")) {
+            totalApfel += 1
+            if (totalApfel % 2 == 0) {
+                return applePrice - 50
+            }
+        }
+
+        return applePrice
     }
 }

@@ -60,4 +60,28 @@ class UnitTests {
         superMarket.input("apple,manzana,apfel")
         assertTrue(superMarket.total == 300)
     }
+
+    @Test
+    fun manzana_discount() {
+        val superMarket: SuperMarket = SuperMarket()
+
+        superMarket.input("manzana,manzana,manzana,manzana")
+        assertTrue(superMarket.total == 300)
+    }
+
+    @Test
+    fun apfel_discount() {
+        val superMarket: SuperMarket = SuperMarket()
+
+        superMarket.input("apfel,apfel")
+        assertTrue(superMarket.total == 150)
+    }
+
+    @Test
+    fun apples_y_manzanas() {
+        val superMarket: SuperMarket = SuperMarket()
+
+        superMarket.input("apple,manzana,manzana,apfel")
+        assertTrue(superMarket.total == 400)
+    }
 }
