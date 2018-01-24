@@ -2,15 +2,16 @@ class SuperMarket {
 
     var total : Int = 0
 
-    val banana: String = "banana"
-    val cherry: String = "cherry"
-    val apple: String = "apple"
+    private val banana: String = "banana"
+    private val cherry: String = "cherry"
+    private val apple: List<String> = listOf("apple", "apfel", "manzana")
 
-    val bananaPrice: Int = 150
-    val cherryPrice: Int = 75
-    val applePrice: Int = 100
+    private val bananaPrice: Int = 150
+    private val cherryPrice: Int = 75
+    private val applePrice: Int = 100
 
-    var totalCherries = 0
+    private var totalCherries = 0
+    private var totalBananas = 0
 
     fun input(input: String) {
 
@@ -24,20 +25,29 @@ class SuperMarket {
 
     fun processItem(item: String) {
         if (item.equals(banana)) {
-            total += bananaPrice
+            totalBananas = totalBananas + 1
+            total += calculateBananaPrice()
         } else if (item.equals(cherry)) {
             totalCherries = totalCherries + 1
             total += calculateCherryPrice()
-        } else if (item.equals(apple)) {
+        } else if (apple.contains(item)) {
             total += applePrice
         }
     }
 
-    fun calculateCherryPrice() : Int {
+    private fun calculateCherryPrice() : Int {
         if (totalCherries % 2 == 0) {
             return cherryPrice - 20
         } else {
             return cherryPrice
+        }
+    }
+
+    private fun calculateBananaPrice() : Int {
+        if (totalBananas % 2 == 0) {
+            return 0
+        } else {
+            return bananaPrice
         }
     }
 }
